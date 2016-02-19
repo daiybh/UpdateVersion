@@ -1,0 +1,114 @@
+// UpdateVersion.odl : type library source for UpdateVersion.dll
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (UpdateVersion.tlb).
+
+[	uuid(63AA8280-09DB-4303-AB77-E5BD147B366A), version(1.0),
+	helpstring ("UPDATEVERSION Developer Studio Add-in") ]
+library UpdateVersion
+{
+	importlib("stdole32.tlb");
+	importlib("devshl.dll");
+	importlib("ide\devdbg.pkg");
+	
+
+	//  Dual interface for CCommands
+	//
+	//  All commands that your add-in adds to DevStudio
+	//   must appear in this interface.  You may use the
+	//   ClassView to add methods to this interface, which
+	//   will cause stub implementations of those methods to
+	//   appear in your CCommands class.
+	
+	[	uuid(CFCB18C3-F387-4462-BAF7-DA988BBB81E0),
+		oleautomation,
+		dual
+	]
+
+	interface ICommands : IDispatch
+	{
+		// methods
+		[id(1)]
+		HRESULT UpdateVersionCommand();
+		HRESULT ZipFolderCommand();
+	};
+
+	//  Class information for CCommands
+
+	[ uuid(2E1C9B1C-5D37-453E-9EE4-CF732016023A) ]
+	coclass Commands
+	{
+		[default] interface ICommands;
+	};
+
+	[ hidden, uuid(07449EA0-ED16-4A4B-8501-F09311ECB238) ]
+	coclass ApplicationEvents
+	{
+		[default] interface IApplicationEvents;
+	}
+
+	[ hidden, uuid(2F0970E6-7381-4316-A936-7ABB00CBBA27) ]
+	coclass DebuggerEvents
+	{
+		[default] interface IDebuggerEvents;
+	}
+
+
+	//  Primary dispatch interface for COptionDlg
+	
+	[ uuid(C65698D5-69FF-4882-BE6A-8A35E2F051C8) ]
+	dispinterface IOptionDlg
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(COptionDlg)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(COptionDlg)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for COptionDlg
+
+	[ uuid(EAC6F3EC-11AB-4CA0-AAB7-92620D9C613B) ]
+	coclass OptionDlg
+	{
+		[default] dispinterface IOptionDlg;
+	};
+
+
+	//  Primary dispatch interface for CZipProj
+	
+	[ uuid(B518DC84-6431-4A96-9890-218E06EDD741) ]
+	dispinterface IZipProj
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CZipProj)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CZipProj)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CZipProj
+
+	[ uuid(F3A56AFF-BDC4-458E-A351-EB04B51790D6) ]
+	coclass ZipProj
+	{
+		[default] dispinterface IZipProj;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
